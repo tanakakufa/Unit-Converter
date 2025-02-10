@@ -5,6 +5,13 @@
 //  Created by Tanaka Kufa on 7/2/2025.
 //
 
+
+
+//temeperature
+//weight
+//height
+
+
 import SwiftUI
 
 struct ContentView: View {
@@ -17,9 +24,9 @@ var body: some View {
     VStack {
         //drop down menu for category
         Menu {
-            Button("Option 1", action: { selectedOption = "Option 1" })
-            Button("Option 2", action: { selectedOption = "Option 2" })
-            Button("Option 3", action: { selectedOption = "Option 3" })
+            Button("Temperature", action: { selectedOption = "Temperature" })
+            Button("Weight", action: { selectedOption = "Weight" })
+            Button("Height", action: { selectedOption = "Height" })
         } label: {
             Label(selectedOption, systemImage: "chevron.down")
                 .padding()
@@ -32,7 +39,62 @@ var body: some View {
         
         
         switch selectedOption {
-        case "Option 1" :
+        case "Temperature" :
+            HStack {
+                TextField("", text: $valueEntered)
+                    .padding()
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(10)
+                    .padding()
+                
+                Menu {
+                    Button("Celcious", action: {
+                        selectedUnit = "C"
+                    })
+                    Button("Kelvin",action:{
+                        selectedUnit = "K"})
+                    Button("Fahreinheit", action: {
+                        selectedUnit = "F"
+                    })
+
+                } label: {
+                    Label(selectedUnit, systemImage: "chevron.down")
+                        .padding()
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(8)
+                }
+            }
+            
+        case "Weight" :
+            HStack {
+                TextField("", text: $valueEntered)
+                    .padding()
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(10)
+                    .padding()
+                
+                Menu {
+                    Button("Milligrams", action: {
+                        selectedUnit = "mg"
+                    })
+                    Button("Grams",action:{
+                        selectedUnit = "g"})
+                    Button("Kilograms", action: {
+                        selectedUnit = "kg"
+                    })
+                    Button("Tons", action: {
+                        selectedUnit = "t"
+                    })
+
+                } label: {
+                    Label(selectedUnit, systemImage: "chevron.down")
+                        .padding()
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(8)
+                }
+            }
+            
+        case "Height" :
             HStack {
                 TextField("", text: $valueEntered)
                     .padding()
@@ -42,10 +104,16 @@ var body: some View {
                 
                 Menu {
                     Button("Centimeters", action: {
-                        selectedUnit = "Cm"
+                        selectedUnit = "cm"
                     })
                     Button("Meters",action:{
-                        selectedUnit = "M"})
+                        selectedUnit = "m"})
+                    Button("Feet", action: {
+                        selectedUnit = "f"
+                    })
+                    Button("Inches", action: {
+                        selectedUnit = "i"
+                    })
                 } label: {
                     Label(selectedUnit, systemImage: "chevron.down")
                         .padding()
@@ -53,6 +121,8 @@ var body: some View {
                         .cornerRadius(8)
                 }
             }
+
+            
         default:
             
             HStack {
@@ -84,10 +154,40 @@ var body: some View {
     
     VStack{
         switch selectedOption {
-        case  "Option 1":
+            
+        case  "Temperature":
             Menu {
+                Button("celcius"){
+                }
+                Button("kelvin"){
+                }
+                Button("fahreinheit"){
+                }
+            } label: {
+                Label("convert to:", systemImage: "chevron.down")
+            }
+            .padding()
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                Text("Answer")
+                    .foregroundColor(Color.black)
+                    .font(.custom("Georgia", size: 65))
+                    .padding()
+                Spacer()
+            }
+            
+        case  "Height":
+            Menu {
+                Button("centimeters"){
+                }
                 Button("meters"){
-                    
+                }
+                Button("feet"){
+                }
+                Button("inches"){
                 }
             } label: {
                 Label("convert to:", systemImage: "chevron.down")
@@ -109,7 +209,36 @@ var body: some View {
             Spacer()
             Spacer()
         
+        case  "Weight":
+            Menu {
+                Button("milligrams"){
+                }
+                Button("grams"){
+                }
+                Button("kilograms"){
+                }
+                Button("tons"){
+                }
+            } label: {
+                Label("convert to:", systemImage: "chevron.down")
+            }
+            .padding()
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                Text("Answer")
+                    .foregroundColor(Color.black)
+                    .font(.custom("Georgia", size: 65))
+                    .padding()
+                Spacer()
+            }
+            
+            
+            
         default:
+            
             
             Menu {
                 Button("option1"){
