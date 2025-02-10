@@ -67,15 +67,18 @@ var body: some View {
         Spacer()
         
         HStack {
+            Spacer()
             
-            TextField("", text: $convertTo)
+            Text("Answer")
+                .foregroundColor(Color.black)
+                .font(.custom("Georgia", size: 65))
                 .padding()
-                .background(Color.pink.opacity(0.1))
-                .cornerRadius(8)
-                .padding()
-            
-            
+            Spacer()
         }
+        Spacer()
+        Spacer()
+        Spacer()
+        Spacer()
     }
     .background(Color.blue.opacity(0.5))
     }
