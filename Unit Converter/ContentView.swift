@@ -15,6 +15,7 @@ struct ContentView: View {
 var body: some View {
     
     VStack {
+        //drop down menu for category
         Menu {
             Button("Option 1", action: { selectedOption = "Option 1" })
             Button("Option 2", action: { selectedOption = "Option 2" })
