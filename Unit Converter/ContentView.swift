@@ -29,57 +29,112 @@ var body: some View {
             
         }
         .padding()
-        HStack {
-            TextField("", text: $valueEntered)
-                .padding()
-                .background(Color.blue.opacity(0.1))
-                .cornerRadius(10)
-                .padding()
-            
-            Menu {
-                Button("unit option 1", action: {
-                    selectedUnit = "unit option 1"
-                })
-                Button("unit option 2",action:{
-                    selectedUnit = "unit option 2"})
-            } label: {
-                Label(selectedUnit, systemImage: "chevron.down")
+        
+        
+        switch selectedOption {
+        case "Option 1" :
+            HStack {
+                TextField("", text: $valueEntered)
                     .padding()
                     .background(Color.blue.opacity(0.1))
-                    .cornerRadius(8)
+                    .cornerRadius(10)
+                    .padding()
+                
+                Menu {
+                    Button("Centimeters", action: {
+                        selectedUnit = "Cm"
+                    })
+                    Button("Meters",action:{
+                        selectedUnit = "M"})
+                } label: {
+                    Label(selectedUnit, systemImage: "chevron.down")
+                        .padding()
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(8)
+                }
             }
+        default:
+            
+            HStack {
+                TextField("", text: $valueEntered)
+                    .padding()
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(10)
+                    .padding()
+                
+                Menu {
+                    Button("unit option 1", action: {
+                        selectedUnit = "unit option 1"
+                    })
+                    Button("unit option 2",action:{
+                        selectedUnit = "unit option 2"})
+                } label: {
+                    Label(selectedUnit, systemImage: "chevron.down")
+                        .padding()
+                        .background(Color.blue.opacity(0.1))
+                        .cornerRadius(8)
+                }
+            }
+        
         }
-
         Spacer()
         
     }
     .background(Color.pink.opacity(0.5))
     
     VStack{
-        
-        Menu {
-            Button("option1"){
-                
+        switch selectedOption {
+        case  "Option 1":
+            Menu {
+                Button("meters"){
+                    
+                }
+            } label: {
+                Label("convert to:", systemImage: "chevron.down")
             }
-        } label: {
-            Label("convert to:", systemImage: "chevron.down")
-        }
-        .padding()
-        Spacer()
-        
-        HStack {
+            .padding()
             Spacer()
             
-            Text("Answer")
-                .foregroundColor(Color.black)
-                .font(.custom("Georgia", size: 65))
-                .padding()
+            HStack {
+                Spacer()
+                
+                Text("Answer")
+                    .foregroundColor(Color.black)
+                    .font(.custom("Georgia", size: 65))
+                    .padding()
+                Spacer()
+            }
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+        
+        default:
+            
+            Menu {
+                Button("option1"){
+                    
+                }
+            } label: {
+                Label("convert to:", systemImage: "chevron.down")
+            }
+            .padding()
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                Text("Answer")
+                    .foregroundColor(Color.black)
+                    .font(.custom("Georgia", size: 65))
+                    .padding()
+                Spacer()
+            }
+            Spacer()
+            Spacer()
+            Spacer()
             Spacer()
         }
-        Spacer()
-        Spacer()
-        Spacer()
-        Spacer()
     }
     .background(Color.blue.opacity(0.5))
     }
